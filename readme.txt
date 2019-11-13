@@ -1,4 +1,4 @@
 Midoriya
 Kathmandu
 Music, Counter Strike
-20000
+9000
