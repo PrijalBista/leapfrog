@@ -5,7 +5,7 @@
 .header-top-wrapper {
 	height: 80px;
 	background-color: #76c7c1;
-	background-image: url('./images/ruler-header.png');
+	background-image: url('/images/ruler-header.png');
 	background-repeat: repeat-x;
 	background-position: bottom;
 	padding: 0px 172px;
@@ -39,7 +39,7 @@
 	/*padding: 0 20px;*/
 }
 .header-top-right ul.nav-items li.portfolio {
-	background-image: url('./images/button.png');
+	background-image: url('/images/button.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	width: 120px;
@@ -57,5 +57,43 @@
     padding-top: 34px;
 }
 
+.header-bottom-wrapper {
+	/*height: 92px;*/
+	height: 80px;
+	/*background-color: #ececec;*/
+	padding: 0px 172px;
+}
+.header-bottom {
+	padding: 0 50px;
+	line-height: 80px;
+	color: #898d8e;
+	background-image: url('/images/down-arrow.png');
+	/*background-repeat: repeat-x;*/
+	/*background-position: bottom;*/
+}
 
+.header-bottom-left {
+	float: left;
+}
 
+.header-bottom-right {
+	float: right;
+}
+.header-bottom-right ul{
+	list-style: none;
+}
+.header-bottom-right ul li {
+	float: left;
+	background-image: url('/images/breadcrump.png');
+	background-repeat: no-repeat;
+	background-position: right;
+	padding: 0 14px;   
+	/* 6pixel breadcrump size + 8px distance between text and breadcrump = 14px*/
+}
+.header-bottom-right ul li:nth-last-child(1) {
+	background-image: none;
+}
+.header-bottom-right ul li a{
+	text-decoration: none;
+	color: #898d8e;	
+}
