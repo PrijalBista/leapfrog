@@ -1,0 +1,61 @@
+.red {
+	background-color: red;
+}
+
+.header-top-wrapper {
+	height: 80px;
+	background-color: #76c7c1;
+	background-image: url('./images/ruler-header.png');
+	background-repeat: repeat-x;
+	background-position: bottom;
+	padding: 0px 172px;
+}
+.header-top {
+	padding: 0 50px;
+}
+.header-top-left {
+	float: left;
+	height: 80px;
+	/*background-color: red;*/
+}
+.header-top-right {
+	float: right;
+	height: 80px;
+	/*background-color: tomato;*/
+}
+.logo {
+	float:left;
+	height: 150px;
+	line-height: 80px;
+}
+
+.header-top-right ul.nav-items {
+	list-style: none;	
+}
+.header-top-right ul.nav-items li {
+	float: left;
+	color: #fff;
+	line-height: 80px;
+	/*padding: 0 20px;*/
+}
+.header-top-right ul.nav-items li.portfolio {
+	background-image: url('./images/button.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 120px;
+	text-align: center;
+}
+.header-top-right ul.nav-items li a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	padding: 0 20px;
+}
+
+.header-top-right ul.nav-items li a img{
+    padding-top: 34px;
+}
+
+
+
