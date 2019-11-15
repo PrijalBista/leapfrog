@@ -5,7 +5,7 @@
 .header-top-wrapper {
 	height: 80px;
 	background-color: #76c7c1;
-	background-image: url('/images/ruler-header.png');
+	background-image: url('../images/ruler-header.png');
 	background-repeat: repeat-x;
 	background-position: bottom;
 	padding: 0px 172px;
@@ -39,7 +39,7 @@
 	/*padding: 0 20px;*/
 }
 .header-top-right ul.nav-items li.portfolio {
-	background-image: url('/images/button.png');
+	background-image: url('../images/button.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	width: 120px;
@@ -67,7 +67,7 @@
 	padding: 0 50px;
 	line-height: 80px;
 	color: #898d8e;
-	background-image: url('/images/down-arrow.png');
+	background-image: url('../images/down-arrow.png');
 	/*background-repeat: repeat-x;*/
 	/*background-position: bottom;*/
 }
@@ -84,7 +84,7 @@
 }
 .header-bottom-right ul li {
 	float: left;
-	background-image: url('/images/breadcrump.png');
+	background-image: url('../images/breadcrump.png');
 	background-repeat: no-repeat;
 	background-position: right;
 	padding: 0 14px;   
