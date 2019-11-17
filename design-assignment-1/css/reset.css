@@ -3,3 +3,9 @@
 	padding: 0px;
 	font-family: Arial;
 }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
