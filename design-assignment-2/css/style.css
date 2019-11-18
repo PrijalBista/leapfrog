@@ -9,14 +9,17 @@
 	.burger {
 		display: block;
 	}
-	.nav-items-ul ul {
+	.nav-items-ul {
 		display: none;
 	}
 	.nav-items-ul ul li{
 		float: none;
 		margin: 0 auto;
 	}
-	.burger:hover  .nav-items-list {
+	div.burger:hover {
+		background-color: #fff;
+	}
+	div.burger:hover .nav-items-ul {
 		/*background-color: #fff;*/
 		display: block;
 	}
