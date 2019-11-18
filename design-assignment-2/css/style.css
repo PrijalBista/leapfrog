@@ -1,0 +1,29 @@
+/* Media Queries In Descending order */
+
+/* For IPad */
+@media only screen and (max-width: 768px) {
+	.logo, .nav-items-ul {
+		float: none;
+		text-align: center;
+	}
+	.burger {
+		display: block;
+	}
+	.nav-items-ul ul {
+		display: none;
+	}
+	.nav-items-ul ul li{
+		float: none;
+		margin: 0 auto;
+	}
+	.burger:hover  .nav-items-list {
+		/*background-color: #fff;*/
+		display: block;
+	}
+}
+
+
+/* For Galaxy S5 */
+@media only screen and (max-width: 640px) {
+	
+}

@@ -1,0 +1,241 @@
+ /*Header Section Start */
+
+.header-top {
+	height: 80px;
+	background-color: #76c7c1;
+	background-image: url('../images/ruler-header.png');
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+
+.header-top-inner, .header-middle-inner {
+	width: 1155px;
+	height: 80px;
+	margin: 0 auto;
+}
+
+.logo {
+	float: left;
+	padding-top: 20px;
+}
+
+.nav-items-ul {
+	float: right;
+}
+
+.nav-items-ul ul li {
+	float: left;
+	/*width: 120px;*/
+	width: 122px;
+	text-align: center;
+	line-height: 80px;
+	color: #fff;
+}
+.nav-items-ul ul {
+	list-style: none;
+}
+.nav-items-ul ul li.search-icon{
+	width: 17px;
+	padding-top: 3px;
+}
+.nav-items-ul ul li a {
+	text-decoration: none;
+	color: #fff;
+	display:block;
+}
+.nav-items-ul ul li a:hover {
+	background-image: url('../images/button.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+}
+
+.nav-items-ul ul li.active {
+	background-image: url('../images/button.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+}
+
+.header-middle {
+	background-color: #ececec;
+	height: 80px;
+}
+
+.middle-inner-left {
+	float: left;
+	line-height: 80px;
+	color: #818785;
+	width: 100px;
+}
+.middle-inner-right {
+	float: right;
+	line-height: 80px;
+	min-width: 200px;
+}
+.middle-inner-right ul {
+	list-style: none;
+}
+.middle-inner-right ul li {
+	float: left;
+	color: #818785;
+}
+.middle-inner-right ul li a {
+	text-decoration: none;
+	color: #818785;
+}
+.middle-inner-right ul li a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+.middle-inner-right ul li:after {
+	content: '/';
+	color: #818785;
+	padding: 0 14px;
+}
+.middle-inner-right ul li:nth-last-child(1):after {
+	content: '';
+	padding: 0;
+}
+
+.header-bottom {
+	background-color: #f3f3f3;
+}
+.header-bottom-inner {
+	width: 1173px;
+	height: 25px;
+	margin: 0 auto;
+	background-image: url('../images/down-arrow.png');
+	background-repeat: no-repeat;
+}
+
+/* Header Section End */
+
+/* Footer Section Start */
+
+.footer-top {
+	height: 300px;
+	background-color: #76c7c1;
+	background-image: url('../images/footer-ruler.png');
+	background-repeat: repeat-x;
+}
+
+.footer-top-inner {
+	/*width: 1126px;*/
+	width: 1168px;
+	padding-top: 45px;
+	margin: 0 auto;
+}
+
+.col3-left .left {
+	float: left;
+	width: 362px;
+}
+
+.col3-left .main-wrapper {
+	float: right;
+}
+
+.col3-left .main-wrapper .main {
+	float:left;
+	width: 432px;
+}
+
+.col3-left .main-wrapper .right {
+	float:right;
+	width: 331px;
+}
+
+
+.col3-left .left .footer-content {
+	padding-top: 27px;
+	color: #fff;
+	line-height: 23px;
+}
+
+.col3-left .left .footer-content .contacts {
+	/*padding-top: 33px;*/
+}
+
+.col3-left .main-wrapper .right .from-blog-header {
+	color: #fff;
+}
+
+.col3-left .main-wrapper .right .from-blog-card {
+	padding-top: 24px;
+}
+.col3-left .main-wrapper .right .from-blog-card .card-image {
+	width: 70px;
+	float: left;
+}
+.col3-left .main-wrapper .right .from-blog-card .card-content {
+	width: 243px;
+	float: right;
+}
+.col3-left .main-wrapper .right .from-blog-card .card-content .head{
+	color: #fff;
+}
+.col3-left .main-wrapper .right .from-blog-card .card-content .date{
+	color: #377e78;
+	padding-top: 12px;
+}
+
+
+.col3-left .main-wrapper .main .main-left {
+	float: left;
+}
+.col3-left .main-wrapper .main .main-right {
+	float: right;
+}
+.col3-left .main-wrapper .main h3 {
+	color: #457c77;
+}
+
+.col3-left .main-wrapper .main .main-left .list {
+	padding-left: 35px;
+}
+
+.col3-left .main-wrapper .main .main-right .list {
+	padding-right: 35px;
+}
+.col3-left .main-wrapper .main ul {
+	list-style: none;
+	color: #fff;
+	padding-left: 23px;
+}
+.col3-left .main-wrapper .main ul li {	
+	line-height: 23px;
+}
+.col3-left .main-wrapper .main ul li:before {
+	content: '>';
+	padding-right: 8px;
+}
+
+
+.footer-bottom {
+	height: 50px;
+	background-color: #6bb4ad;
+
+}
+.footer-bottom-inner {
+	/*width: 1126px;*/
+	width: 1168px;
+	line-height: 50px;
+	color: #fff; 
+	margin: 0 auto;
+}
+.footer-bottom-inner .bottom-left {
+	float: left;
+}
+.footer-bottom-inner .bottom-right {
+	float: right;
+}
+.footer-bottom-inner .bottom-right ul {
+	list-style: none;
+}
+.footer-bottom-inner .bottom-right ul li {
+	float: left;
+	padding: 0 15px;
+}
+
+/*Footer Section End */
