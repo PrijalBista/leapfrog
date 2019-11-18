@@ -265,6 +265,8 @@
 	/*width: 1168px;*/
 	width: 73em;
 	margin: 0 auto;
+}
+.slider-container {
 	position: relative;
 }
 .slider-images .images {
@@ -324,7 +326,19 @@
 }
 
 /* End  Slider Section */
-
+.double-slider.col2-left .left {
+	float: left;
+	/*width: 900px;*/
+	width: 77.0547%;
+	padding-right: 30px;
+}
+.double-slider.col2-left .right {
+	float: right;
+}
+.double-slider.col2-left .left img {
+	width: 100%;
+	height: auto;
+}
 /* Start Double Slider Section */
 
 /* End Double Slider Section */
