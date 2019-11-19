@@ -1,0 +1,13 @@
+
+.inner {
+	width: 1173px;
+	margin: 0 auto;
+}
+
+/* Two Column Layouts */
+.col2-left .left {
+	float: left;
+}
+.col2-left .right {
+	float: right;
+}

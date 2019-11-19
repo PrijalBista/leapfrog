@@ -1,0 +1,21 @@
+/* Start Navbar Section */
+.inner {
+	/*height: 102px; */
+	/* line height ley milaune ho*/
+	/*background-color: #cecece;*/
+}
+.logo {
+	line-height: 102px;
+}
+ul.nav-items li {
+	float: left;
+	line-height: 102px;
+	width: 103px;
+	text-align: center;
+}
+ul.nav-items li:hover {
+	background-image: url('../images/nav-hover.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+/* End Navbar Section */
