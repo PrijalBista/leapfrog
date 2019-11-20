@@ -330,6 +330,7 @@ a.link-button {
 	font-size: 40px;
 	padding-bottom: 44px;
 	color: #3f4244;
+	font-weight: 400;
 }
 .team .top p {
 	font-size: 13px;
@@ -373,6 +374,291 @@ a.link-button {
 	background-image: linear-gradient(rgb(255, 108, 84), rgb(255, 60, 88));
 }
 .quotes {
-	height: 200px;
+	padding-top: 95px;
 }
+.quotes .quotes-container {
+	text-align: center;
+}
+.quotes .quotes-container span.quote-symbol {
+	display: inline-block;
+	background-color: #233537;
+	color: #fff;
+	border-radius: 50%;
+	padding: 12px;
+}
+.quotes .quotes-container h3 {
+	padding: 14px 0;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 400;
+}
+.quotes .quotes-container span {
+	color: #fff;
+	font-size: 13px;
+}
+.quotes .quotes-container ul {
+	list-style: none;
+	display: inline-block;
+	padding-top: 49px;
+	padding-bottom: 99px;
+}
+.quotes .quotes-container ul li{
+	float: left;
+}
+.quotes .quotes-container ul li.left{
+	padding-right: 29px;
+}
+
 /* End Quotes Section */
+
+/* Start Newsletter Section */
+.newsletter-section {
+	background-color: #233537;
+
+}
+.newsletter {
+	text-align: center;
+	padding-top: 92px;
+	padding-bottom: 95px;
+}
+.newsletter h3 {
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	padding-bottom: 62px;
+}
+a.blue-square-button {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 400;
+	/*padding: 17px 54px;*/
+	padding: 15px 52px;
+	border: 1px solid #5aecc9;
+}
+/* End Newsletter Section */
+
+/* Start About Section */
+.about {
+	padding-top: 95px;
+	padding-bottom: 95px;
+}
+.about-content {
+	/*padding-left: 57px;*/
+	width: 510px;
+	padding-top: 37px;
+}
+.about-content h2 {
+	padding-left: 8px;
+	font-size: 20px;
+	font-weight: 500px;
+	color: #3f4244;
+	padding-bottom: 46px;
+}
+.about-content p {
+	color: #929ba0;
+	font-size: 13px;
+	padding-bottom: 21px;
+}
+.about-content p:nth-child(1) {
+	padding-bottom: 0;
+}
+/* End About Section */
+
+/* Start Add Section */
+.add-section {
+	position: relative;
+}
+.add-section-outer {
+	background-image: linear-gradient(rgb(92, 238, 201), rgb(85, 232, 202));
+	margin-bottom: 41px;
+	/*height: 200px;*/
+}
+.add {
+	padding-top: 125px;
+}
+.phone-section {
+	width: 220px;
+	height: 446px;
+	background-image: url('../images/add-section-phone-black.png');
+	position: relative;
+	bottom: -41px;
+	left: 155px;
+}
+.add-content {
+	width: 641px;
+	padding-top: 86px;
+}
+.add-content h2 {
+	font-size: 25px;
+	font-weight: 400;
+	color: #fff;
+	padding-bottom: 19px;
+}
+.add-content span {
+	font-size: 15px;
+	font-weight: 500;
+	color: #243638;
+	padding-left: 5px;
+	padding-bottom: 27px;
+	display: inline-block;
+}
+.add-content p {
+	font-size: 13px;
+	color: #fff;
+}
+/* End Add Section */
+
+/* Start Clients-Aluminai Section */
+.clients {
+	padding-top: 80px;
+	padding-bottom: 62px;
+	text-align: center;
+}
+.clients .top h2 {
+	font-size: 40px;
+	padding-bottom: 44px;
+	color: #3f4244;
+	font-weight: 400;
+}
+.clients .top p {
+	font-size: 13px;
+	padding-bottom: 98px;
+	color: #929ba0;
+}
+.clients .bottom .quote-container {
+	/*width: 372px;*/
+	width: 316px;
+	background-image: linear-gradient(rgb(105, 251, 199),rgb(87, 233, 202));
+	padding: 46px 27px 61px 27px;
+	/*padding-top: 46px;*/
+	/*padding-bottom: 61px;*/
+}
+.quote-container {
+	float: left;
+	margin-left: 29px;
+}
+.quote-container:nth-child(1) {
+	margin-left: 0;
+}
+.quote-container span {
+	display: block;
+}
+.quote-container span.name {
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	padding-bottom: 12px;
+}
+.quote-container span.role {
+	color: #243638;
+	padding-bottom: 31px;
+}
+.quote-container span.role,
+.quote-container p,
+ {
+ 	font-size: 13px;
+ 	font-weight: 400;
+ }
+.quote-container p {
+	color: #fff;
+}
+/* End Clients-Aluminai Section */
+
+/* End Contact Us Section */
+.contact-us-section {
+	background-image: linear-gradient(#ff6155, #ff3258);
+
+}
+.contact-us {
+	padding-top: 80px;
+	padding-bottom: 62px;
+	text-align: center;
+}
+.contact-us .top h2 {
+	font-size: 40px;
+	/*padding-bottom: 44px;*/
+	color: #fff;
+	font-weight: 400;
+}
+.contact-us .top p {
+	font-size: 13px;
+	padding-bottom: 98px;
+	color: #fff;
+}
+.contact-form input {
+	line-height: 52px;
+	font-size: 15px;
+	font-weight: 500;
+	border: none;
+	border: 0;
+	border: 1px solid #fff;
+	background-color: transparent;
+	color: #fff;
+	padding-left: 31px;
+	padding-right: 31px;
+	/*width: 772px;*/
+	width: 710px;
+	margin-left: 20px;
+}
+.contact-form .form-group-top {
+	padding-bottom: 86px;
+}
+.contact-form .form-group-top input {
+	/*width: 372px;*/
+	width: 308px;
+	margin-left: 29px;
+}
+.contact-form .form-group-bottom {
+	padding-bottom: 35px;
+}
+.contact-form .form-group-submit {
+	text-align: right;
+	padding-right: 182px;
+}
+.contact-form input.submit {
+	background-color: #233537;
+	/*padding:;*/
+	width: auto;
+	text-align: center;
+}
+/* End Contact Us Section */
+
+/* Start Map Section */
+.map-section {
+	background-color: #232e3d;
+}
+.map {
+	padding: 60px 0;
+}
+.map .right .content {
+	background-image: linear-gradient(rgb(105, 251, 199),rgb(87, 233, 202));
+	padding: 0 151px 0 53px;
+}
+.map .right .content span {
+	display: block;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 75px;
+}
+/* End Map Section */
+
+/* End Footer Section */
+footer {
+	text-align: center;
+	line-height: 112px;
+	background-color: #233537;
+}
+footer span {
+	color: #fff;
+	font-size: 15px;
+	font-weight: 500;
+}
+footer span.blue {
+	color: #10cab7;
+}
+/* End Footer Section */
+
+
