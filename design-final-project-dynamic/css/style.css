@@ -50,18 +50,34 @@ ul.nav-items li:hover {
 	nav {
 		background-color: #cecece;
 	}
-	.nav .left, .nav .right, .nav .right ul li {
-		/*float: none;*/
-		/*width: 100%;*/
+	.burger, .logo {
+		display: inline-block;
+	}
+	.logo {
+		padding-left: 20px;
+	}
+	.nav .left {
+		position: relative;
+	}
+	/*.nav .right ul {*/
+	ul.nav-items {
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+		top: 60px;
+		left: 0;
+		background-color: red;
+		display: none;
+	}
+	.nav .right ul li {
+		width: 100%;
 	}
 	.nav .right ul li a {
 		padding: 0;
 	}
-	.nav .nav-items {
-		display: none;
-	}
-	.nav .burger:hover {
-		background-color: green;
+
+	figure.burger:hover ul.nav-items {
+		display: block;
 	}
 }
 
@@ -898,9 +914,15 @@ a.blue-square-button {
 	font-weight: 500;
 	line-height: 75px;
 }
-.gmap-iframe {
-	width: 100%;
+/*.map .embedded-map {
+	width: 51.1508%;
 	height: 500px;
+}*/
+.gmap-iframe {
+	width: 600px;
+	height: 500px;
+	border: none;
+	border: 0;
 }
 .map .right {
 	position: absolute;
@@ -911,10 +933,10 @@ a.blue-square-button {
 @media (max-width: 768px) {
 	.gmap-iframe {
 		width: 100%;
-		height: 100%;
+		height: 500px;
 	}
 	.embedded-map, .mapouter, .gmap_canvas {
-		width: 100% !important;
+		width: 100%;
 	}
 	.map .right .content {
 		padding: 0 40px 0 40px;
