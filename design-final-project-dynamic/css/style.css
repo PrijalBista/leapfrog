@@ -650,7 +650,7 @@ a.blue-square-button {
 .about-content h2 {
 	padding-left: 8px;
 	font-size: 20px;
-	font-weight: 500px;
+	font-weight: 500;
 	color: #3f4244;
 	padding-bottom: 46px;
 }
@@ -793,7 +793,7 @@ a.blue-square-button {
 	padding-bottom: 31px;
 }
 .quote-container span.role,
-.quote-container p,
+.quote-container p
  {
  	font-size: 13px;
  	font-weight: 400;
