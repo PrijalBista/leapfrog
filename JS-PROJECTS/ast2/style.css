@@ -1,0 +1,25 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.carousel-container {
+	width: 400px;
+	height: 300px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.carousel-container .carousel-image-wrapper img {
+	/*display: block;*/
+	width: 100%;
+}
+
+.carousel-image-wrapper {
+	position: relative;
+}
+
+.carousel-image-wrapper img{
+	position: absolute;
+}

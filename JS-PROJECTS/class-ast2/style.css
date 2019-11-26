@@ -1,0 +1,15 @@
+#grid-container {
+	border: 1px solid black;
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative;
+}
+
+span.point {
+	background-color: #5395b8;
+	height: 6px;
+	width: 6px;
+	display: block;
+	border-radius: 50%;
+}
