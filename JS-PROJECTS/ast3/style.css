@@ -1,0 +1,15 @@
+.app {
+  height: 500px;
+  width: 500px;
+  background: #dfdfdf;
+  position: relative;
+}
+
+.box {
+  /*background: #f44336;*/
+  border-radius: 50%;
+  position: absolute;
+}
+.box.clicked {
+	background-color: red;
+}
