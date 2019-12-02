@@ -1,0 +1,4 @@
+ 2013  convert -size 128x128 ant.gif -resize 30x30 resized.gif
+ 2129  convert highway-original.png highway.jpg
+ 2133  convert highway.jpg -quality 50% highway-low.jpg
+ 2139  history | grep convert > convertDoc.txt

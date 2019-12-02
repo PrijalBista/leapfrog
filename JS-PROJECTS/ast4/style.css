@@ -1,0 +1,32 @@
+.app {
+  height: 500px;
+  width: 800px;
+  background: #dfdfdf;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  /*background-image: url('images/highway-low.jpg');*/
+}
+
+.app img {
+	width: 100%;
+	position: absolute;
+	top: 0px;
+}
+
+.app .player-car {
+  position: absolute;
+  bottom: 0px;
+  /*left: 50%;*/
+  transform: translateX(-50%);
+  transition-property: left;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}
+.app .enemy-car {
+  position: absolute;
+  transform: translateX(-50%);
+}
+.hide {
+  display: none;
+}
