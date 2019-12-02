@@ -9,7 +9,6 @@ function Car(parentElement) {
 	this.height = 80;
 	this.element = null;
 	this.parentElement = parentElement;
-	this.bullets = [];
 	var that = this;
 
 	this.init = function() {
@@ -49,24 +48,6 @@ function Car(parentElement) {
 
 		// this.element.style.transform = 'rotate(0)';
 
-	}
-
-	this.fireBullet = function() {
-		// TODO Limited Ammunition
-		this.bullets.push(new Bullet(this.parentElement, this.left, this.element.offsetTop).init());
-		// console.log('firing bullet', this.bullets);
-	}
-
-	this.moveBullet = function() {
-		for(var i = this.bullets.length - 1; i >= 0; i--) {
-			if(this.bullets[i].y < -5) {
-				// console.log('destroy bullet');
-				this.bullets[i].destroyBullet();
-				this.bullets.splice(i,1);
-			} else {
-				this.bullets[i].moveBullet();
-			}
-		}
 	}
 }
 
@@ -120,16 +101,6 @@ function EnemyCar(parentElement, top, left, dy, carImgId) {
 		);
 	}
 
-	this.checkBulletHit = function(playerCar) {
-		return playerCar.bullets.some(function(bullet, i) {
-			if(bullet.y <= this.top + this.height && bullet.x === this.left) {
-				// destroy bullet and remove it from bullets array
-				bullet.destroyBullet();
-				playerCar.bullets.splice(i,1);
-				return true; // stop loop
-			} else return false;
-		}, this);
-	}
 	this.removeCarElement = function() {
 
 		this.element.remove();
@@ -146,14 +117,14 @@ function Game(parentElement) {
 		car: null,
 		score: 0,
 		start: false,
-		speed : 4,
+		speed : 2,
 		enemyDestroyCounter: 0,
 		keys: {
 			ArrowLeft: false,
-			ArrowRight: false,
-			Enter: false
+			ArrowRight: false
 		},
 		updateKey: function(e) {
+
 			if(this.keys[e.key] == 'undefined') return;
 			this.keys[e.key] = true;
 		}
@@ -173,7 +144,9 @@ function Game(parentElement) {
 	var that = this;
 
 	this.init = function() {
-		this.AltScreen.addEventListener('click', this.start.bind(this));
+		var startGame = document.querySelector('.welcome-screen');
+		startGame.addEventListener('click', this.start.bind(this));
+		this.AltScreen = startGame;
 		// get previous highscore if exists
 		this.highScore = localStorage.getItem('carGameHighScore')? 
 							JSON.parse(localStorage.getItem('carGameHighScore')) : 
@@ -192,11 +165,11 @@ function Game(parentElement) {
 		
 		this.AltScreen.classList.add('hide');
 		this.gameArea.classList.remove('hide');
-		this.gameArea.focus();
+
 		this.highway.init();
 
 		// Add Key Event Listener
-		this.gameArea.addEventListener('keydown', player.updateKey.bind(player));
+		document.addEventListener('keydown', player.updateKey.bind(player));
 
 		// Initial call for gameLoop
 		window.requestAnimationFrame(this.gameLoop.bind(this));
@@ -216,18 +189,10 @@ function Game(parentElement) {
 			player.car.moveRight();
 		}
 
-		if(player.keys.Enter) {
-			player.car.fireBullet();
-			player.keys.Enter = false;
-		}
-
 		// move highway
-		this.highway.moveHighWay(player.speed);
-		// move Bullets
-		player.car.moveBullet();
+		this.highway.moveHighWay();
 		// move enemyCars
 		var hitFlag = false;
-		var carsToBeRemoved = [];
 
 		enemyCars.forEach(function(enemy, i){
 			// Check for collision
@@ -253,39 +218,25 @@ function Game(parentElement) {
 
 			enemy.moveEnemy();
 
-			if(enemy.checkBulletHit(player.car)){
-				console.log('bullet hit car !');
-				// visuals of car damage
-				enemy.removeCarElement();
-				carsToBeRemoved.push(i);
-			}
-
 			// Check if Player has passed Enemy without Hit
 			if(enemy.top > 500 + 50) {
 				// Passed without hit
 				enemy.removeCarElement(); // remove car div form dom
-				carsToBeRemoved.push(i); // push index of cars to be removed
-				player.score += 1; // increase player score by 20
+				enemyCars.splice(i,1); // remove car from enemyCars array
+				player.score += 20; // increase player score by 20
 				player.enemyDestroyCounter++;
 
 				console.log('enemy car passed without hit score: '+ player.score);
 
 				// If player passes 5 enemy cars increase the speed by 1
 				if(player.enemyDestroyCounter > 0 && player.enemyDestroyCounter % 5 == 0) {
-					player.speed += 1;
+					player.speed += 2;
 
 					console.log('speed increased', player.speed);
 					enemyCars.forEach(function(el){el.dy = player.speed;});
 					// console.log(enemyCars);
 				}
 			}
-		});
-		
-		// Reverse carsToBeRemovedIndex in descending order
-		carsToBeRemoved.sort(function(a,b){ return b - a; });
-		// Remove all the cars that are out of bound
-		carsToBeRemoved.forEach(function(i){
-			enemyCars.splice(i,1);
 		});
 
 		// After Certain Time period respawn new enemy cars
@@ -297,8 +248,7 @@ function Game(parentElement) {
 								that.gameArea,
 								-330,
 								(20 + getRandomNumber(0,2)*30),
-								// player.speed,
-								3,
+								player.speed,
 								getRandomNumber(1,3)
 							).init()
 			);
@@ -313,6 +263,12 @@ function Game(parentElement) {
 		};
 	}
 }
+
+
+var app = document.getElementById('gameArea1');
+var game = new Game(app);
+game.init();
+
 
 
 // Highway Type
@@ -341,14 +297,14 @@ function HighWay(parentElement) {
 	this.moveHighWay  = function(speed = 5) {
 
 		if(this.y1 > 600){
-			this.y1 = this.y2 - (imgDimensions.height-speed);
+			this.y1 = this.y2 - (imgDimensions.height-5) ;
 		} else {
 
 			this.y1 += speed;
 		}
 
 		if(this.y2 > 600){
-			this.y2 = this.y1 - (imgDimensions.height-speed);
+			this.y2 = this.y1 - (imgDimensions.height-5);
 		} else {
 			this.y2 += speed;
 		}
@@ -362,58 +318,3 @@ function HighWay(parentElement) {
 function getRandomNumber ( min, max ) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
-
-
-// Bullet/Armor type
-function Bullet(parentElement, x, y) {
-
-	// this.bulletCount = bulletCount || 10;
-	this.x = x;
-	this.y = y;
-	
-	this.dy = 3;
-
-	this.width = 15;
-	this.height = 20;
-
-	this.element = null;
-	this.parentElement = null;
-
-	this.init = function() {
-		this.parentElement = parentElement;
-		
-		var bullet = document.createElement('div');
-		bullet.style.height = this.height + 'px';
-		bullet.style.width = this.width+ 'px';
-
-		bullet.style.backgroundColor = 'red';
-		bullet.style.position = 'absolute';
-		
-		bullet.style.left = this.x + '%';
-		bullet.style.transform = 'translate(-50%)';
-		bullet.style.top = (this.y - this.height)+ 'px';
-
-
-		this.parentElement.appendChild(bullet);
-
-		this.element = bullet;
-		return this;
-	}
-
-	this.moveBullet = function() {
-		this.y -= this.dy;
-		this.element.style.top = this.y + 'px';
-	}
-
-	this.destroyBullet = function() {
-		this.element.remove();
-	}
-}
-
-var app = document.getElementById('gameArea1');
-var game = new Game(app);
-game.init();
-// Second Instance
-// var app2 = document.getElementById('gameArea2');
-// var game2 = new Game(app2);
-// game2.init();
