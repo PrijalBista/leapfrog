@@ -10,6 +10,7 @@ function Car(parentElement) {
 	this.element = null;
 	this.parentElement = parentElement;
 	this.bullets = [];
+	this.bulletsCount = 3;
 	var that = this;
 
 	this.init = function() {
@@ -53,7 +54,9 @@ function Car(parentElement) {
 
 	this.fireBullet = function() {
 		// TODO Limited Ammunition
+		if(this.bulletsCount <= 0) return;
 		this.bullets.push(new Bullet(this.parentElement, this.left, this.element.offsetTop).init());
+		this.bulletsCount--;
 		// console.log('firing bullet', this.bullets);
 	}
 
@@ -238,10 +241,20 @@ function Game(parentElement) {
 				enemy.element.style.transform = 'rotate(20deg)';
 				player.car.element.style.transform = 'rotate(-20deg)';
 				console.log('GameOVER score: ',player.score);
-				// that.gameArea.classList.add('hide');
-				// that.AltScreen.classList.remove('hide');
-				// that.AltScreen.innerHTML = '<h2>GAME OVER</h2><h3>Score: '+ player.score + '</h3>';
-				// if new HighScore then set new highscore
+				var gameOverScreen = document.createElement('text');
+				gameOverScreen.innerHTML = '<h2>GAME OVER</h2><h2>SCORE: '+player.score+'</h2>';
+				gameOverScreen.style.position = 'absolute';
+				gameOverScreen.style.height = '100%';
+				gameOverScreen.style.width = '100%';
+				gameOverScreen.style.color = '#fff';
+				gameOverScreen.style.display = 'flex';
+				gameOverScreen.style.flexDirection = 'column';
+				gameOverScreen.style.justifyContent = 'center';
+				gameOverScreen.style.alignItems = 'center';
+				that.gameArea.appendChild(gameOverScreen);
+
+				// gameOverScreen
+
 				if(player.score > that.highScore.score) {
 					that.highScore.score = player.score;
 					// persistant storage
@@ -255,6 +268,8 @@ function Game(parentElement) {
 
 			if(enemy.checkBulletHit(player.car)){
 				console.log('bullet hit car !');
+				// increse score
+				player.score++;
 				// visuals of car damage
 				enemy.removeCarElement();
 				carsToBeRemoved.push(i);
@@ -268,6 +283,11 @@ function Game(parentElement) {
 				player.score += 1; // increase player score by 20
 				player.enemyDestroyCounter++;
 
+				// Reload Armor when score increases by 5 
+				if(player.score % 5 === 0) {
+					player.car.bulletsCount = 3;
+					console.log('Armor reloaded');
+				}
 				console.log('enemy car passed without hit score: '+ player.score);
 
 				// If player passes 5 enemy cars increase the speed by 1
@@ -373,7 +393,7 @@ function Bullet(parentElement, x, y) {
 	
 	this.dy = 3;
 
-	this.width = 15;
+	this.width = 35;
 	this.height = 20;
 
 	this.element = null;
@@ -386,7 +406,9 @@ function Bullet(parentElement, x, y) {
 		bullet.style.height = this.height + 'px';
 		bullet.style.width = this.width+ 'px';
 
-		bullet.style.backgroundColor = 'red';
+		bullet.style.backgroundColor = 'cecece';
+		bullet.style.backgroundImage = 'url("images/missile.png")';
+		bullet.style.backgroundSize = 'cover';
 		bullet.style.position = 'absolute';
 		
 		bullet.style.left = this.x + '%';
@@ -414,6 +436,6 @@ var app = document.getElementById('gameArea1');
 var game = new Game(app);
 game.init();
 // Second Instance
-// var app2 = document.getElementById('gameArea2');
-// var game2 = new Game(app2);
-// game2.init();
+var app2 = document.getElementById('gameArea2');
+var game2 = new Game(app2);
+game2.init();
