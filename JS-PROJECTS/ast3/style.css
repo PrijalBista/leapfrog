@@ -3,6 +3,7 @@
   width: 500px;
   background: #dfdfdf;
   position: relative;
+  background-image: url('images/bg.jpg');
 }
 
 .box {
@@ -11,5 +12,7 @@
   position: absolute;
 }
 .box.clicked {
-	background-color: red;
+	/*background-color: red;*/
+	/*background-image: url('images/blood.png');*/
+	/*background-size: contain;*/
 }

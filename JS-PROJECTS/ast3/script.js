@@ -5,10 +5,10 @@ function Box (parentElement) {
 	this.x = 10;
 	this.y = 10;
 	this.speed = 1;
-	this.dx = 1;
-	this.dy = 1;
-	this.width = 30;
-	this.height = 30;
+	this.dx = 2;
+	this.dy = 2;
+	this.width = 50;
+	this.height = 50;
 	this.element = null;
 	this.parentElement = parentElement;
 	this.hasClicked = false;
@@ -20,9 +20,13 @@ function Box (parentElement) {
 		box.style.height = this.height + 'px';
 		box.style.width = this.width + 'px';
 		box.style.backgroundImage = 'url(images/ant.gif)';
+		box.style.backgroundSize = 'cover';
 		box.classList.add('box');
 		this.parentElement.appendChild(box);
 		this.element = box;
+		var factor = (Math.floor(getRandomNumber(1, 3)) == 1)?1:-1;
+		this.dx = factor * Math.floor(getRandomNumber(3,8));
+		this.dy = factor * Math.floor(getRandomNumber(3,8));
 		box.addEventListener('click', this.boxClicked.bind(this) );
 	}
 
@@ -172,7 +176,10 @@ function Game (parentElement, boxCount) {
 		for( var i = 0; i < boxes.length; i++) {
 			// remove boxes element that has been clicked and increase score
 			if(boxes[i].hasClicked) {
-				boxes[i].element.remove();
+				// boxes[i].element.remove();
+				boxes[i].element.style.backgroundImage = 'url("images/blood.png")';
+				boxes[i].element.style.backgroundSize = 'contain';
+
 				clickedBoxesIndices.push(i);
 				score = score + 10;
 				continue;
