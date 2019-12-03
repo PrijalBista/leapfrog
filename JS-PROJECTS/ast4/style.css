@@ -32,3 +32,7 @@
 .hide {
   display: none;
 }
+
+.car-game-2d {
+  position: relative;
+}

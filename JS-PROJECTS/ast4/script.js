@@ -183,6 +183,7 @@ function Game(parentElement) {
 							this.highScore;
 
 		this.highway = new HighWay(this.gameArea);
+
 	}
 
 	this.start = function() {
@@ -197,7 +198,8 @@ function Game(parentElement) {
 		this.gameArea.classList.remove('hide');
 		this.gameArea.focus();
 		this.highway.init();
-
+		// Initialize Stats Screen
+		this.statsScreen();
 		// Add Key Event Listener
 		this.gameArea.addEventListener('keydown', player.updateKey.bind(player));
 
@@ -206,6 +208,34 @@ function Game(parentElement) {
 
 	}
 
+	this.statsScreen = function() {
+		var scoreScreen = document.createElement('div');
+		scoreScreen.style.position = 'absolute';
+		scoreScreen.style.top = '0';
+		scoreScreen.style.left = '40px';
+		// scoreScreen.style.width = '30px';
+		// scoreScreen.style.height = '30px';
+		scoreScreen.innerHTML = '<h2>Score</h2><h2>'+player.score+'</h2>';
+		this.parentElement.appendChild(scoreScreen);
+		this.scoreScreen = scoreScreen;
+
+
+
+		var highScoreScreen = document.createElement('div');
+		highScoreScreen.style.position = 'absolute';
+		highScoreScreen.style.top = '0';
+		highScoreScreen.style.right = '80px';
+		// highScoreScreen.style.width = '30px';
+		// highScoreScreen.style.height = '30px';
+		highScoreScreen.innerHTML = '<h2>HighScore</h2><h2>'+this.highScore.score+'</h2>';
+		this.parentElement.appendChild(highScoreScreen);
+		this.highScoreScreen = highScoreScreen;
+
+	}
+
+	this.updateStats = function() {
+		this.scoreScreen.innerHTML = '<h2>Score</h2><h2>'+player.score+'</h2>';
+	}
 
 	this.gameLoop = function() {
 
@@ -327,6 +357,7 @@ function Game(parentElement) {
 		// recursive call gameLoop
 		if(!hitFlag) {
 			this.gameCounter++;
+			this.updateStats();
 			// setTimeout(function() {
 				window.requestAnimationFrame(that.gameLoop.bind(that));
 			// },1000/60);
