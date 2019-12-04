@@ -5,13 +5,15 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 	this.dx = 1;
 	this.y1 = 0;
 	this.y2= 0;
-	this.height = 220;
+	// this.height = 220;
+	this.height = gameAreaHeight;
 	this.width = 52;
 	this.gameAreaWidth = 0;
 	this.gameAreaHeight = 0;
 	this.birdHeight = 0;
 	this.pipe1 = null;
 	this.pipe2 = null;
+	this.checkCollision = true;
 	var that = this;
 
 	this.init = function() {
@@ -49,7 +51,7 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 		this.x = this.gameAreaWidth;
 		this.draw();
 
-		console.log('pipe y1',this.y1, 'pipe y2',this.y2);
+		console.log('New pipe x',this.x, 'y1',this.y1, 'pipe y2',this.y2);
 		return this;
 	}
 
@@ -65,10 +67,18 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 	this.move = function(bird) {
 		// collision check
 		if(bird.x+bird.width/2 > this.x && bird.y + bird.height/2 > this.y1) {
-			console.log('colision  pipe ma ');
-			console.log('bird x y',bird.x, bird.y);
-			console.log('pipe x y',this.x, this.y1);
-			debugger;
+		if(this.checkCollision) {	
+			if(
+				bird.x < this.x + this.width &&
+				bird.x + bird.width > this.x &&
+				bird.y < this.y + this.height &&
+				bird.y + bird.height > this.y
+				)
+				console.log('colision  pipe ma ');
+				console.log('bird x y',bird.x, bird.y);
+				console.log('pipe x y',this.x, this.y1);
+				// debugger;
+			}
 		}
 		this.x -= this.dx;
 		this.draw();

@@ -5,7 +5,7 @@ function Background(parentElement, width, height) {
 	this.x1 = 0;
 	this.x2 = 0;
 	this.dx = -1;
-	this.width = width || 500;
+	this.width = width || 300;
 	this.height = height || 500;
 	this.base_img = null;
 
