@@ -74,6 +74,12 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 
 			console.log('colision lower pipe ma ');
 			state.current = state.over;
+			// console.log('bird x y',bird.x, bird.y);
+			// console.log('pipe lower x y1',this.x, this.y1);
+			// console.log('pipe upper x y2',this.x, this.y2);
+			// console.log('bird.y + bird.height/2 > this.y1', bird.y + bird.height/2 > this.y1);
+			// console.log('bird.y + bird.height/2 < this.y1',bird.y + bird.height/2 < this.y1);
+			// debugger;
 		}
 
 		this.x -= this.dx;

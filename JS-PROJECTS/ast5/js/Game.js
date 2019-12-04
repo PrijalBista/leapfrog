@@ -62,10 +62,11 @@ function Game(parentElement) {
 	}
 
 	this.loop = function() {
-		// move Background
-		this.background.moveBackground();
 
 		if(this.state.current === this.state.game) {
+			// move Background
+			this.background.moveBackground();
+
 			if(this.keyPressed) {
 				this.player.bird.flap();
 				this.keyPressed = false;
@@ -75,7 +76,7 @@ function Game(parentElement) {
 			this.player.bird.move(this.state, this.frame);
 
 			//Generate pipe
-			if(this.frame % 120 === 0) {
+			if(this.frame % 150 === 0) {
 				console.log('generate new pipe');
 				this.pipes.push(new Pipe(
 					this.gameCanvas,
@@ -91,12 +92,14 @@ function Game(parentElement) {
 			// 	// remove pipes that have moved out of the canvas
 				// console.log('foreach pipe', this.pipes[i].x);
 				if(this.pipes[i].x + this.pipes[i].width < 0) this.pipes.splice(i,1);
-				else this.pipes[i].move(this.player.bird);
+				else this.pipes[i].move(this.state, this.player.bird);
 
 			}
 			// this.pipes.forEach(function(pipe) { pipe.move(that.player.bird)});
 
 		}else if (this.state.current === this.state.ready) {
+			// move Background
+			this.background.moveBackground();
 			this.player.bird.move(this.state, this.frame);
 		
 		} else {
