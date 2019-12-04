@@ -90,8 +90,6 @@ function Game(parentElement) {
 			for(var i = this.pipes.length-1; i>=0; i--) {
 			// 	// remove pipes that have moved out of the canvas
 				// console.log('foreach pipe', this.pipes[i].x);
-				if(this.pipes[i].x +this.pipes[i].width < this.player.bird.x) this.pipes[i].checkCollision =false;
-
 				if(this.pipes[i].x + this.pipes[i].width < 0) this.pipes.splice(i,1);
 				else this.pipes[i].move(this.player.bird);
 
