@@ -32,16 +32,24 @@ function Game(parentElement, keyBinding) {
 		this.player.bird = new Bird(this.gameCanvas,this.background.height).init();
 		this.player.score = 0;
 
-		// this.parentElement.focus();
+		// load GetReady Image
+		var startImg = document.createElement('img');
+		startImg.src = 'images/message.png';
+		startImg.style.width = '100%';
+		this.startImg = startImg;
 
-		// console.log('gamecanvas', this.gameCanvas);
+		// load Game Over Image
+		var gameOverImg = document.createElement('img');
+		gameOverImg.src = 'images/gameover.png';
+		gameOverImg.style.width = '100%';
+		this.gameOverImg = gameOverImg;
+		this.loadHighScore();
 		// this.gameCanvas.addEventListener('keydown', this.updateKeyPress.bind(this));
 		document.addEventListener('keydown', this.updateKeyPress.bind(this));
 
 		// Start Game Loop
 		this.startGame();
-		var hs = localStorage.getItem('flappyBirdHighScore');
-		this.highScore = hs ? hs : 0;
+
 	}
 
 	this.updateKeyPress = function(e) {
@@ -115,9 +123,11 @@ function Game(parentElement, keyBinding) {
 			// move Background
 			this.background.moveBackground();
 			this.player.bird.move(this.state, this.frame);
+			this.readyScreen();
 		
 		} else {
 			// game over state
+			this.gameOverScreen();
 			this.player.bird.move(this.state, this.frame);
 		}
 
@@ -129,9 +139,46 @@ function Game(parentElement, keyBinding) {
 
 	this.writeScore = function() {
 		// this.context.font = "30px Comic Sans MS";
-		this.context.font = "30px Arial";
+		this.context.font = "20px Arial";
 		this.context.fillStyle = "#eee";
 		this.context.textAlign = "center";
-		this.context.fillText(this.player.score, this.background.width/2, 30); 
+		this.context.fillText(this.player.score, this.background.width/2, 30);
+		this.context.fillText('HIGHSCORE: '+this.highScore, this.background.width/2, this.background.height-30);	
+	}
+
+	this.readyScreen = function() {
+		this.context.drawImage(
+			this.startImg,
+			this.background.width/2 - this.startImg.width/2,
+			50
+		);
+
+		this.context.font = "20px Arial";
+		this.context.fillStyle = "#000";
+		this.context.textAlign = "center";
+		var msg = (this.keyBinding ===' ')?'space':this.keyBinding;
+		this.context.fillText('Press "'+ msg + '" To Jump', this.background.width/2, 300); 
+	}
+
+	this.gameOverScreen = function() {
+		this.context.drawImage(
+			this.gameOverImg,
+			this.background.width/2 - this.startImg.width/2,
+			50
+		);
+
+		if(this.player.score > this.highScore) {
+			this.context.font = "20px Arial";
+			this.context.fillStyle = "#eee";
+			this.context.textAlign = "center";
+			this.context.fillText('HighScore !', this.background.width/2, 50);
+			this.highScore = this.player.score;
+			localStorage.setItem('flappyBirdHighScore', this.highScore);
+			this.loadHighScore();
+		}
+	}
+	this.loadHighScore = function() {
+		var hs = localStorage.getItem('flappyBirdHighScore');
+		this.highScore = hs ? hs : 0;
 	}
 }
