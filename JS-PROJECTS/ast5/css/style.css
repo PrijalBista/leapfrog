@@ -11,4 +11,5 @@
 
 .canvas-container {
 	position: relative;
+	display: inline-block;
 }

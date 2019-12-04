@@ -4,7 +4,7 @@ function Game(parentElement) {
 	this.parentElement = null;
 	this.gameCanvas = null;
 	this.background = null;
-
+	this.highScore = null;
 	this.pipes = [];
 
 	this.player = {
@@ -34,12 +34,13 @@ function Game(parentElement) {
 		// this.parentElement.focus();
 
 		// console.log('gamecanvas', this.gameCanvas);
-		// this.parentElement.addEventListener('keydown', this.updateKeyPress.bind(this));
-		document.addEventListener('keydown', this.updateKeyPress.bind(this));
+		this.gameCanvas.addEventListener('keydown', this.updateKeyPress.bind(this));
+		// document.addEventListener('keydown', this.updateKeyPress.bind(this));
 
 		// Start Game Loop
 		this.startGame();
-
+		var hs = localStorage.getItem('flappyBirdHighScore');
+		this.highScore = hs ? hs : 0;
 	}
 
 	this.updateKeyPress = function(e) {
@@ -49,6 +50,10 @@ function Game(parentElement) {
 		if(this.state.current === this.state.ready) {
 			this.state.current = this.state.game;
 			return;
+		} else if (this.state.current === this.state.over) {
+			this.pipes = [];
+			this.player.score = 0;
+			this.state.current = this.state.ready;
 		}
 		// this.keyPressed = !this.keyPressed;
 		this.keyPressed = true;
@@ -89,9 +94,15 @@ function Game(parentElement) {
 
 			// Move pipes
 			for(var i = this.pipes.length-1; i>=0; i--) {
-			// 	// remove pipes that have moved out of the canvas
-				// console.log('foreach pipe', this.pipes[i].x);
-				if(this.pipes[i].x + this.pipes[i].width < 0) this.pipes.splice(i,1);
+
+				// increase score if surpase pipe without collision
+				if(this.pipes[i].getScore===true && this.pipes[i].x + this.pipes[i].width < this.player.bird.x-this.player.bird.width) {
+					this.player.score++;
+					this.pipes[i].getScore = false;
+				}
+				// remove pipes that have moved out of the canvas
+				else if(this.pipes[i].x + this.pipes[i].width < 0) this.pipes.splice(i,1);
+				// move pipe
 				else this.pipes[i].move(this.state, this.player.bird);
 
 			}

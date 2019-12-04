@@ -13,6 +13,8 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 	this.birdHeight = 0;
 	this.pipe1 = null;
 	this.pipe2 = null;
+	this.getScore = true;
+
 	var that = this;
 
 	this.init = function() {
@@ -44,8 +46,8 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 		// 	that.draw();
 		// }
 		// get random height for first pipe
-		this.y2 = getRandomNumber(100, this.gameAreaHeight-100);
-		this.y1 = this.y2 + 70*getRandomNumber(2, 5);
+		this.y2 = getRandomNumber(100, this.gameAreaHeight-200);
+		this.y1 = this.y2 + 70*getRandomNumber(2, 3);
 		// this.y2 = 0;
 		this.x = this.gameAreaWidth;
 		this.draw();
