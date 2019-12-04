@@ -44,7 +44,7 @@ function Background(parentElement, width, height) {
 			this.x2 = this.x1 + base_img_width;
 		}
 
-		this.context.clearRect(0, 0, 500, 500);  // clear canvas
+		this.context.clearRect(0, 0, this.width, this.height);  // clear canvas
 		this.context.drawImage(this.base_img, this.x1, 0);
 		this.context.drawImage(this.base_img, this.x2, 0);
 	}

@@ -52,7 +52,7 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 		this.x = this.gameAreaWidth;
 		this.draw();
 
-		console.log('New pipe x',this.x, 'y1',this.y1, 'pipe y2',this.y2);
+		// console.log('New pipe x',this.x, 'y1',this.y1, 'pipe y2',this.y2);
 		return this;
 	}
 
@@ -74,7 +74,7 @@ function Pipe(parentElement, gameAreaWidth, gameAreaHeight, birdHeight) {
 			(bird.y + bird.height/2 > this.y1 || bird.y - bird.height/2 < this.y2)
 			) {
 
-			console.log('colision lower pipe ma ');
+			// console.log('colision lower pipe ma ');
 			state.current = state.over;
 		}
 
