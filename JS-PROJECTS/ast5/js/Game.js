@@ -26,7 +26,7 @@ function Game(parentElement) {
 		this.parentElement = parentElement;
 		this.gameCanvas = parentElement.querySelector('.gameArea');
 
-		this.background = new Background(this.gameCanvas, 500, 500).init();
+		this.background = new Background(this.gameCanvas, 300, 500).init();
 		
 		this.player.bird = new Bird(this.gameCanvas,this.background.height).init();
 		this.player.score = 0;
