@@ -6,7 +6,7 @@ function HelixAnimation(canvasElement) {
 	this.frame = 0;
 	this.width = 0;
 	this.height = 0;
-	this.speed = 0.03;
+	this.speed = 0.02;
 	this.phase = 0;
 	this.maxCircleRadius = 20;
 	this.rows = 10;
@@ -43,8 +43,8 @@ function HelixAnimation(canvasElement) {
 				
 					var width_per_column = (this.width - 2*50)/this.cols;
 					var x = (i+1)*width_per_column;
-					// column offset mapped form (0-numberofCols) to (0-2PI)
-					var colOffset = i * (2*Math.PI/this.cols);
+					// column offset mapped form (0-numberofCols) to (0-PI)
+					var colOffset = i * (Math.PI/this.cols);
 
 				for(var j = 0; j < this.rows; j++) {
 				
