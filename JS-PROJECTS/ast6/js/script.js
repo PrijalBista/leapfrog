@@ -10,7 +10,7 @@ function HelixAnimation(canvasElement) {
 	this.phase = 0;
 	this.maxCircleRadius = 20;
 	this.rows = 10;
-	this.cols = 10;
+	this.cols = 15;
 	this.color1 = [253, 174, 120];
 	this.color2 = [226, 129, 161];
 	this.numStrands = 2;
@@ -48,7 +48,7 @@ function HelixAnimation(canvasElement) {
 
 				for(var j = 0; j < this.rows; j++) {
 				
-					var y = this.height/3 + j*20 +Math.sin(strandPhase + colOffset) * 100;
+					var y = this.height/3 + j*30 +Math.sin(strandPhase + colOffset) * 100;
 					
 					var sizeOffset = (Math.cos(strandPhase - j/this.rows + colOffset) + 1) * 0.5;
 
