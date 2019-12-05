@@ -1,0 +1,39 @@
+[1] Design Assignment 1: 1A-home-search.jpg
+[DEMO] https://prijalbista.github.io/leapfrog/design-assignment-1/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/design-assignment-1
+
+[2] Design Assignment 2: 1A-Settings.jpg
+[DEMO] https://prijalbista.github.io/leapfrog/design-assignment-2/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/design-assignment-2
+
+[3] Design Final Project: Static
+[DEMO] https://prijalbista.github.io/leapfrog/design-final-project-static/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/design-final-project-static
+
+[4] Design Final Project: Dynamic
+[DEMO] https://prijalbista.github.io/leapfrog/design-final-project-dynamic/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/design-final-project-dynamic
+
+[5] JS Assignment 1: Image Slider
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast2-procedural/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast2-procedural
+
+[6] JS Assignment 2: Image Slider with hold Items
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast2-oop/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast2-oop
+
+[7] JS Assignment 3: Box Collision And Ant Smasher
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast3/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast3
+
+[8] JS Assignment 4: Car Lane Game With Bullet Implementation
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast4/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast4
+
+[9] JS Assignment 5: Flappy Bird
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast5/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast5
+
+[10] JS Assignment 6: Helix Animation
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast6/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast6

@@ -31,7 +31,13 @@ th {
 td {
 	font-weight: 200;
 }
-
+.side-note {
+	text-align: center; 
+	padding-top: 5px;
+	font-weight: 500;
+	font-size: 20px;
+	color: #e91e63;
+}
 /* TOGGLER STYLES */
 .dark-mode-toggler {
 	padding-bottom: 20px;
@@ -68,4 +74,7 @@ td {
 }
 .dark-mode .dark-mode-toggler span {
 	color: #e6f5ff;
+}
+.dark-mode .side-note {
+	color: #fff;
 }
