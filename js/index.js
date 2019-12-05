@@ -1,9 +1,24 @@
-var tableContainer = document.getElementById('table-container');
+var tableContainer = null; 
+var dmswitch = null ;
+function init() {
 
-function toggleDarkMode(e) {
-	if(e.target.checked) {
-		tableContainer.classList.add('dark-mode');
-	} else {
-		tableContainer.classList.remove('dark-mode');
+	tableContainer = document.getElementById('table-container');
+	dmswitch = tableContainer.getElementsByTagName('input')[0];
+
+	if(localStorage.getItem('app-darkmode') === 'true') {
+		dmswitch.checked = true;
+		toggleDarkMode(dmswitch);
 	}
 }
+
+function toggleDarkMode(e) {
+	if(dmswitch.checked) {
+		tableContainer.classList.add('dark-mode');
+		localStorage.setItem('app-darkmode', 'true');
+	} else {
+		tableContainer.classList.remove('dark-mode');
+		localStorage.setItem('app-darkmode', 'false');		
+	}
+}
+
+init();
