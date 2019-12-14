@@ -6,8 +6,9 @@
 }
 
 .table-container {
-	height: 100vh;
+	/*height: 100vh;*/
 	padding: 10px 80px;
+	overflow: auto;
 }
 table, th, td {
 	border: 1px solid #eee;
@@ -37,6 +38,9 @@ td {
 	font-weight: 500;
 	font-size: 20px;
 	color: #e91e63;
+}
+a:hover {
+	color: #4caf50;
 }
 /* TOGGLER STYLES */
 .dark-mode-toggler {

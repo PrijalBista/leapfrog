@@ -45,6 +45,8 @@ function Background(parentElement, width, height) {
 
 		foreground_image.onload = function() {
 		 	that.context.drawImage(foreground_image,that.x, that.height - that.foreground_img_height);
+		 	that.context.drawImage(foreground_image,that.x1, that.height - that.foreground_img_height);
+		 	that.context.drawImage(foreground_image,that.x2, that.height - that.foreground_img_height);
 		}
 
 		return this;

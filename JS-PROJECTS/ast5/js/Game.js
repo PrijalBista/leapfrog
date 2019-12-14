@@ -19,6 +19,7 @@ function Game(parentElement, keyBinding) {
 		over: 2
 	}
 	this.frame = 0;
+	this.pipeGenerateCountdown = 100;
 	var that = this;
 
 	this.init = function() {
@@ -67,6 +68,7 @@ function Game(parentElement, keyBinding) {
 		} else if (this.state.current === this.state.over) {
 			this.pipes = [];
 			this.player.score = 0;
+			this.pipeGenerateCountdown = 100;
 			this.state.current = this.state.ready;
 		}
 		// this.keyPressed = !this.keyPressed;
@@ -95,7 +97,7 @@ function Game(parentElement, keyBinding) {
 			this.player.bird.move(this.state, this.frame);
 
 			//Generate pipe
-			if(this.frame % 160 === 0) {
+			if(this.pipeGenerateCountdown <= 0) {
 				// console.log('generate new pipe');
 				this.pipes.push(new Pipe(
 					this.gameCanvas,
@@ -104,6 +106,8 @@ function Game(parentElement, keyBinding) {
 					this.player.bird.height
 					).init()
 				);
+				// reset pipeGenerateCountdown to 120-160 (optimal)
+				this.pipeGenerateCountdown = getRandomNumber(120, 250);
 			}
 
 			// Move pipes
@@ -136,6 +140,7 @@ function Game(parentElement, keyBinding) {
 		}
 
 		this.frame ++;
+		this.pipeGenerateCountdown--;
 		this.writeScore();
 		// loop again
 		window.requestAnimationFrame(this.loop.bind(this));
@@ -186,4 +191,10 @@ function Game(parentElement, keyBinding) {
 		var hs = localStorage.getItem('flappyBirdHighScore');
 		this.highScore = hs ? hs : 0;
 	}
+}
+
+
+// Global Utility Function
+function getRandomNumber ( min, max ) {
+	return Math.floor(Math.random() * (max - min) + min);
 }
