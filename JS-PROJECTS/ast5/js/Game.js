@@ -29,7 +29,10 @@ function Game(parentElement, keyBinding) {
 
 		this.background = new Background(this.gameCanvas, 300, 500).init();
 		
-		this.player.bird = new Bird(this.gameCanvas,this.background.height).init();
+		this.player.bird = new Bird(
+			this.gameCanvas,
+			this.background.gameAreaHeight
+			).init();
 		this.player.score = 0;
 
 		// load GetReady Image
@@ -46,7 +49,8 @@ function Game(parentElement, keyBinding) {
 		this.loadHighScore();
 		// this.gameCanvas.addEventListener('keydown', this.updateKeyPress.bind(this));
 		document.addEventListener('keydown', this.updateKeyPress.bind(this));
-
+		// add click /tap support
+		this.gameCanvas.addEventListener('click', function() { that.updateKeyPress({key: that.keyBinding})});
 		// Start Game Loop
 		this.startGame();
 
@@ -91,12 +95,12 @@ function Game(parentElement, keyBinding) {
 			this.player.bird.move(this.state, this.frame);
 
 			//Generate pipe
-			if(this.frame % 150 === 0) {
+			if(this.frame % 160 === 0) {
 				// console.log('generate new pipe');
 				this.pipes.push(new Pipe(
 					this.gameCanvas,
 					this.background.width, 
-					this.background.height, 
+					this.background.gameAreaHeight, 
 					this.player.bird.height
 					).init()
 				);
@@ -140,7 +144,7 @@ function Game(parentElement, keyBinding) {
 	this.writeScore = function() {
 		// this.context.font = "30px Comic Sans MS";
 		this.context.font = "20px Arial";
-		this.context.fillStyle = "#eee";
+		this.context.fillStyle = "#000";
 		this.context.textAlign = "center";
 		this.context.fillText(this.player.score, this.background.width/2, 30);
 		this.context.fillText('HIGHSCORE: '+this.highScore, this.background.width/2, this.background.height-30);	
@@ -158,6 +162,7 @@ function Game(parentElement, keyBinding) {
 		this.context.textAlign = "center";
 		var msg = (this.keyBinding ===' ')?'space':this.keyBinding;
 		this.context.fillText('Press "'+ msg + '" To Jump', this.background.width/2, 300); 
+		this.context.fillText('Click/Tap(mobile) also Works', this.background.width/2, 320); 
 	}
 
 	this.gameOverScreen = function() {

@@ -75,9 +75,9 @@ function Bird(parentElement, gameAreaHeight) {
 			this.y += this.dy;
 
 			// collision detection from ground
-			if(this.y + this.height >= this.gameAreaHeight) {
+			if(this.y + this.height/2 >= this.gameAreaHeight) {
 				console.log('vui ma thokyo')
-				this.y = this.gameAreaHeight-this.height;
+				this.y = this.gameAreaHeight-this.height/2;
 				// change game state to over
 				if(state.current === state.game)
 					state.current = state.over;
