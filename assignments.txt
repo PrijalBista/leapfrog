@@ -37,3 +37,7 @@
 [10] JS Assignment 6: Helix Animation
 [DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/ast6/index.html
 [CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/ast6
+
+[11] JS Final Project: Online Js Code Editor
+[DEMO] https://prijalbista.github.io/leapfrog/JS-PROJECTS/finalProject/index.html
+[CODE] https://github.com/PrijalBista/leapfrog/tree/master/JS-PROJECTS/finalProject

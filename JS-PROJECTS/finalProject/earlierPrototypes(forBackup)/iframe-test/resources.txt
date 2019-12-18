@@ -1,0 +1,10 @@
+[1] : first hurdle => get cursor position from contentEditable div
+
+TLDR :  https://stackoverflow.com/questions/3972014/get-contenteditable-caret-index-position  (used solution from here)
+
+Other Resources:
+
+https://stackoverflow.com/questions/4811822/get-a-ranges-start-and-end-offsets-relative-to-its-parent-container/4812022#4812022
+
+
+HMM IS THIS BETTER ? https://stackoverflow.com/questions/6249095/how-to-set-caretcursor-position-in-contenteditable-element-div

@@ -1,0 +1,18 @@
+/* Javascript Keywords(jsk) Styles*/
+.js-keyword {
+	color: #708;
+}
+.js-identifier {
+	color: #00f;
+}
+
+.js-single-quote-string {
+	color: #a11;
+}
+
+.js-double-quote-string {
+	color: #a11;	
+}
+.js-number {
+	color: #164;
+}
