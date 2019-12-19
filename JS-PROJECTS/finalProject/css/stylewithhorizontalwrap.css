@@ -42,13 +42,13 @@
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;  
+    word-wrap: break-word; 
+}
+.js-editor pre span.presentation {
+	position: relative;
 }
 
-.js-editor .displayCodeArea span.presentation {
-	position: relative;	
-}
-.js-editor .line-number-gutter {
+.js-editor span.line-number-gutter {
 	color: #9f9f9f;
 	width: 40px;
 	font-size: 15px;
@@ -58,7 +58,7 @@
 
 	position: absolute;
 	left: -40px;
-	line-height: 30px;
+	top: 3px;
 }
 
 .wordwrap { 
@@ -80,11 +80,11 @@ ul.autocomplete-ul li {
 	padding-right: 20px;
 }
 
-.remove-scrollbar::-webkit-scrollbar {
+/*.remove-scrollbar::-webkit-scrollbar {
   display: none;
-}
+}*/
 
-.remove-scrollbar {
+/*.remove-scrollbar {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-}
+}*/
