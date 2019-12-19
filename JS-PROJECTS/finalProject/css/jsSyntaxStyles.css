@@ -5,7 +5,9 @@
 .js-identifier {
 	color: #00f;
 }
-
+.js-identifier-func{
+	color: #4CAF50;
+}
 .js-single-quote-string {
 	color: #a11;
 }

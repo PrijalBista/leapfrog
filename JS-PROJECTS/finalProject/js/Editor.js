@@ -32,7 +32,7 @@ function Editor(parentElement,config) {
 		// initialize syntax highlighter module
 		this.highlighter = new Highlighter(this.textArea, this.pre).init();
 		// initialize autocomplete module
-		this.autocomplete = new AutoComplete(this.textArea, this.pre).init();
+		this.autocomplete = new AutoComplete(this.parentElement, this.textArea, this.pre).init();
 		this.initializeEventListeners();
 		return this;
 	}
@@ -45,7 +45,7 @@ function Editor(parentElement,config) {
 	this.tabHandler = function(e) {
 
 		if(e.keyCode === 9) {
-			console.log('handle Tab (keyCode: 9)');
+			// console.log('handle Tab (keyCode: 9)');
 			e.preventDefault();
 		
 			var text = this.textArea.value;

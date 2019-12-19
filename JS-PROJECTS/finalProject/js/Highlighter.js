@@ -6,11 +6,13 @@ function Highlighter(textArea, pre) {
 		this.textArea = textArea;
 		this.pre  = pre;
 
-		this.keywords = 'abstract	arguments	await*	boolean break	byte	case	catch char	class*	const	continue debugger	default	delete	do double	else	enum*	eval export*	extends*	false	final finally	float	for	function goto	if	implements	import* in	instanceof	int	interface let*	long	native	new null	package	private	protected public	return	short	static super*	switch	synchronized	this throw	throws	transient	true try	typeof	var	void volatile	while	with	yield';
+		// this.keywords = 'abstract	arguments	await*	boolean break	byte	case	catch char	class*	const	continue debugger	default	delete	do double	else	enum*	eval export*	extends*	false	final finally	float	for	function goto	if	implements	import* in	instanceof	int	interface let*	long	native	new null	package	private	protected public	return	short	static super*	switch	synchronized	this throw	throws	transient	true try	typeof	var	void volatile	while	with	yield';
+		this.keywords = 'abstract	arguments	await*	boolean break	byte	case	catch char	const	continue debugger	default	delete	do double	else	enum*	eval export*	extends*	false	final finally	float	for	function goto	if	implements	import* in	instanceof	int	interface let*	long	native	new null	package	private	protected public	return	short	static super*	switch	synchronized	this throw	throws	transient	true try	typeof	var	void volatile	while	with	yield';
 		this.keywords = this.keywords.replace(/	/g, ' ');
 
 		this.es6Keywords = this.keywords.split(' ').filter(el => el[el.length-1] === '*')
-		this.es6Keywords = this.es6Keywords.map(el => el.replace('*','')); 
+		this.es6Keywords = this.es6Keywords.map(el => el.replace('*',''));
+		this.es6Keywords.push('class(?!=)');
 
 		this.es5Keywords = this.keywords.split(' ').filter(el => el[el.length-1] !== '*')
 
@@ -49,10 +51,11 @@ function Highlighter(textArea, pre) {
 			var highlightedLine = line;
 			// var regxFunc = /(function)(\s+)(\w+)/;
 
-			// Highlight identifiers
-			// highlightedLine = highlightedLine.replace(/(?<=var\s)(\w+)/g, '<span class="js-identifier">$1</span>');
-			// highlightedLine = highlightedLine.replace(/var\s+(\w+)/g, '<span class="js-identifier">$1</span>');
-			// highlightedLine = highlightedLine.replace(regxFunc, '<span class="js-keyword">$1</span>$2<span class="js-identifier>$3</span>');
+			// Highlight identifiers of var
+			highlightedLine = highlightedLine.replace(/(?<=var\s)(\w+)/g, '<span class="js-identifier">$1</span>');
+			// Highlight identifiers of function
+			highlightedLine = highlightedLine.replace(/(?<=function)\s+?(?![0-9])((\w|[$])+)/g, '<span class="js-identifier-func">$&</span>');
+			// Highlight Keywords 
 			highlightedLine = highlightedLine.replace(that.allKeywordsRegExp, '<span class="js-keyword">$1</span>');
 			// Highlight numbers
 			highlightedLine = highlightedLine.replace(/(\d+)(?!'\d+?')/g,'<span class="js-number">$1</span>');
