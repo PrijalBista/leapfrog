@@ -82,6 +82,9 @@ function Editor(parentElement,config) {
 		// var pressedKey = e.key;
 		this.autocomplete.runAutoCompleteHandler(e);
 		this.highlighter.Parser(this.textArea.value);
+		// the textArea doesnt auto scroll to bottom :( so programatically scrolling it to bottom
+		// this.textArea.scrollTop = this.textArea.scrollHeight; // not needed
+		this.scrollHandler();
 	}
 
 	this.scrollHandler = function() {
