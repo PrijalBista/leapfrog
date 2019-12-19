@@ -63,3 +63,12 @@ ul.autocomplete-ul li {
 	display: inline-block;
 	padding-right: 20px;
 }
+
+.remove-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.remove-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}

@@ -52,9 +52,9 @@ function Highlighter(textArea, pre) {
 			// var regxFunc = /(function)(\s+)(\w+)/;
 
 			// Highlight identifiers of var
-			highlightedLine = highlightedLine.replace(/(?<=var\s)(\w+)/g, '<span class="js-identifier">$1</span>');
+			// highlightedLine = highlightedLine.replace(/(?<=var\s)(\w+)/g, '<span class="js-identifier">$1</span>');
 			// Highlight identifiers of function
-			highlightedLine = highlightedLine.replace(/(?<=function)\s+?(?![0-9])((\w|[$])+)/g, '<span class="js-identifier-func">$&</span>');
+			// highlightedLine = highlightedLine.replace(/(?<=function)\s+?(?![0-9])((\w|[$])+)/g, '<span class="js-identifier-func">$&</span>');
 			// Highlight Keywords 
 			highlightedLine = highlightedLine.replace(that.allKeywordsRegExp, '<span class="js-keyword">$1</span>');
 			// Highlight numbers

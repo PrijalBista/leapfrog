@@ -8,6 +8,10 @@ function Editor(parentElement,config) {
 	this.highlighter = null;
 	this.autocomplete = null;
 	this.config = null;
+	
+	this.width = 100;
+	this.height = 500;
+
 	var that = this;
 
 	this.init = function() {
@@ -23,6 +27,11 @@ function Editor(parentElement,config) {
 		this.displayCodeArea = document.createElement('div');
 		this.displayCodeArea.classList.add('displayCodeArea');
 		this.displayCodeArea.classList.add('wordwrap');
+		this.displayCodeArea.classList.add('remove-scrollbar');
+		
+		this.displayCodeArea.style.height = this.height + 'px';
+		this.displayCodeArea.style.overflowY = 'auto';
+
 		this.parentElement.appendChild(this.textArea);
 		this.parentElement.appendChild(this.displayCodeArea);
 
@@ -40,6 +49,7 @@ function Editor(parentElement,config) {
 	this.initializeEventListeners = function() {
 		this.textArea.addEventListener('keydown', this.tabHandler.bind(this));
 		this.textArea.addEventListener('keyup', this.keyPressHandler.bind(this));
+		this.textArea.addEventListener('scroll', this.scrollHandler.bind(this));
 	}
 
 	this.tabHandler = function(e) {
@@ -72,5 +82,11 @@ function Editor(parentElement,config) {
 		// var pressedKey = e.key;
 		this.autocomplete.runAutoCompleteHandler(e);
 		this.highlighter.Parser(this.textArea.value);
+	}
+
+	this.scrollHandler = function() {
+		var scrolltop = this.textArea.scrollTop;
+
+		this.displayCodeArea.scrollTop = scrolltop;
 	}
 }
