@@ -19,7 +19,7 @@ function Highlighter(textArea, pre) {
 
 		this.allKeywords = this.es5Keywords.join().replace(/,/g, '|') + this.es6Keywords.join().replace(/,/g, '|');
 		// allKeywordsRegExp = allKeywordsRegExp.replace(/(\w+)/g, '($1)'); //(function)|(while)| ...
-		this.allKeywordsRegExp = RegExp('\\b('+this.allKeywords+')\\b', 'g');
+		this.allKeywordsRegExp = RegExp('[\'"][^\'"]+[\'"]|\\b('+this.allKeywords+')\\b', 'g');
 		this.domKeywords = 'alert	all	anchor	anchors area	assign	blur	button checkbox	clearInterval	clearTimeout	clientInformation close	closed	confirm	constructor crypto	decodeURI	decodeURIComponent	defaultStatus document	element	elements	embed embeds	encodeURI	encodeURIComponent	escape event	fileUpload	focus	form forms	frame	innerHeight	innerWidth layer	layers	link	location mimeTypes	navigate	navigator	frames frameRate	hidden	history	image images	offscreenBuffering	open	opener option	outerHeight	outerWidth	packages pageXOffset	pageYOffset	parent	parseFloat parseInt	password	pkcs11	plugin prompt	propertyIsEnum	radio	reset screenX	screenY	scroll	secure select	self	setInterval	setTimeout status	submit	taint	text textarea	top	unescape	untaint window';
 		this.domKeywords = this.domKeywords.replace(/	/g, ' ');
 		this.domKeywords = this.domKeywords.split(' ');
@@ -60,22 +60,8 @@ function Highlighter(textArea, pre) {
 			wrapperSpan.appendChild(lineNumber);
 			// split lines with spaces
 
-			var highlightedLine = line;
-			// var regxFunc = /(function)(\s+)(\w+)/;
+			var highlightedLine = that.highlightTheLine(line);
 
-			// Highlight identifiers of var
-			// highlightedLine = highlightedLine.replace(/(?<=var\s)(\w+)/g, '<span class="js-identifier">$1</span>');
-			// Highlight identifiers of function
-			// highlightedLine = highlightedLine.replace(/(?<=function)\s+?(?![0-9])((\w|[$])+)/g, '<span class="js-identifier-func">$&</span>');
-			// Highlight Keywords 
-			highlightedLine = highlightedLine.replace(that.allKeywordsRegExp, '<span class="js-keyword">$1</span>');
-			// Highlight numbers
-			highlightedLine = highlightedLine.replace(/(\d+)(?!'\d+?')/g,'<span class="js-number">$1</span>');
-			// Highlight strings inside quotes
-			highlightedLine = highlightedLine.replace(/('.*?')/g, '<span class="js-single-quote-string">$1</span>');
-			// highlightedLine = highlightedLine.replace(/(?!^")("(?!js-).*?")(?="$)/g, '<span class="js-double-quote-string">$1</span>'); // Todo using lookaheads
-			// ("(?!js-).*?")
-			
 			wrapperSpan.innerHTML += highlightedLine;
 
 			that.pre.innerHTML += '\n';
@@ -130,17 +116,41 @@ function Highlighter(textArea, pre) {
 		lineNumberGutter.innerText = lineNumber;
 		wrapperSpan.appendChild(lineNumberGutter);
 
-		var highlightedLine = lineText;
-
-		highlightedLine = highlightedLine.replace(that.allKeywordsRegExp, '<span class="js-keyword">$1</span>');
-		// Highlight numbers
-		highlightedLine = highlightedLine.replace(/(\d+)(?!'\d+?')/g,'<span class="js-number">$1</span>');
-		// Highlight strings inside quotes
-		highlightedLine = highlightedLine.replace(/('.*?')/g, '<span class="js-single-quote-string">$1</span>');
+		var highlightedLine = that.highlightTheLine(lineText);
 
 		wrapperSpan.innerHTML += highlightedLine;
 
 		// that.pre.innerHTML += '\n'; // not needed ??
+	}
+
+	this.highlightTheLine = function(line) {
+
+		var highlightedLine = line;
+		// var regxFunc = /(function)(\s+)(\w+)/;
+
+		// Highlight identifiers of var
+		// highlightedLine = highlightedLine.replace(/(?<=var\s)(\w+)/g, '<span class="js-identifier">$1</span>');
+		// Highlight identifiers of function
+		// highlightedLine = highlightedLine.replace(/(?<=function)\s+?(?![0-9])((\w|[$])+)/g, '<span class="js-identifier-func">$&</span>');
+		// Highlight Keywords 
+		highlightedLine = highlightedLine.replace(that.allKeywordsRegExp, function(m, grp1) {
+			if(!grp1) return m;
+			else return '<span class="js-keyword">'+grp1+'</span>';
+		});
+		// Highlight numbers
+		// highlightedLine = highlightedLine.replace(/(\d+)(?!'\d+?')/g,'<span class="js-number">$1</span>');
+		// highlightedLine = highlightedLine.replace(/'[^']+'|(\d+)/g, function(m, grp1) {
+		highlightedLine = highlightedLine.replace(/['"][^'"]+['"]|(\d+)/g, function(m, grp1) {
+			if (!grp1) return m;
+			else return '<span class="js-number">'+grp1+'</span>';
+		});
+		// Highlight strings inside quotes
+		highlightedLine = highlightedLine.replace(/('.*?')/g, '<span class="js-single-quote-string">$1</span>');
+		// highlightedLine = highlightedLine.replace(/(?!^")("(?!js-).*?")(?="$)/g, '<span class="js-double-quote-string">$1</span>'); // Todo using lookaheads
+		// ("(?!js-).*?")
+
+
+		return highlightedLine;
 	}
 
 }
