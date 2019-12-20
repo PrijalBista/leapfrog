@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSEditor</title>
+</head>
+<body>
+	<div class="container">
+		<textarea name="js" id="js" cols="30" rows="10"></textarea>
+		<button onclick="runJs()">RUN</button>
+		<hr>
+		<h4>Console Output</h4>
+		<div id="output"></div>
+	</div>
+	<script>
+		var jsCode = document.getElementById('js');
+		var jsOutput = document.getElementById('output');
+
+		function runJs() {
+			console.log('running jsCode');
+			jsOutput.innerHTML = '';
+
+			var myFunc = new Function(jsCode.value);
+			myFunc();
+		}
+
+		// Catching console logs and writing it to another div
+		const add = something => {
+			jsOutput.innerHTML += something;
+		}
+		const originalError = console.error;
+		const originalLog = console.log;
+		const originalWarning = console.warn;
+		const originalInfo = console.info;
+		const originalClear = console.clear;
+
+		console.error = function (error) {
+		  add(error.toString() + error.stack);
+		  originalError.apply(console, arguments);
+		};
+		console.log = function (...args) {
+		  args.forEach(add);
+		  originalLog.apply(console, args);
+		};
+		console.warn = function (...args) {
+		  args.forEach(add);
+		  originalWarning.apply(console, args);
+		};
+		console.info = function (...args) {
+		  args.forEach(add);
+		  originalInfo.apply(console, args);
+		};
+		console.clear = function (...args) {
+		  element.innerHTML = '';
+		  originalClear.apply(console, args);
+		};
+	</script>
+</body>
+</html>

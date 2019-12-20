@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSEDITOR</title>
+</head>
+<body>
+	<textarea id="code"></textarea>
+
+	<iframe id="output"></iframe>
+
+	<button id="submit-b" onclick="update()">run</button>
+
+	<script>
+		function update() 
+		{
+		var frame = document.getElementById('output');
+		var frameDoc = frame.contentDocument || frame.contentWindow.document;
+		var w = document.getElementById("code").value;
+		document.getElementById('output').contentWindow.document.write(w);
+		}
+	</script>
+</body>
+</html>
