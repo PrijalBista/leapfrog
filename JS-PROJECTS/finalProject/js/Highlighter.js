@@ -1,6 +1,7 @@
 function Highlighter(textArea, pre) {
 
 	var that = this;
+	this.noOfLines = null;
 
 	this.init = function() {
 		this.textArea = textArea;
@@ -34,17 +35,28 @@ function Highlighter(textArea, pre) {
 		// console.log('parser',this);
 		var lines = code.split(/\n/g);
 		// console.log('no of lines : ', lines.length);
+		var noOfLinesChanged = that.detectLineChange(lines);
+		if(noOfLinesChanged === false) {
+			// if total number of lines have not been changed then user is only editing
+			// the line that the cursor is currently in so call lazy parser on it 
+			// which only reparses the line
+			that.lazyParser(lines);
+			return;
+		}
+		// console.log('normal parser called');
 
 		// Reset Pre
 		that.pre.innerHTML = '';
 
 		lines.forEach((line, i) => {
+
 			var wrapperSpan = document.createElement('span');
 			wrapperSpan.setAttribute('class', 'presentation');
+			wrapperSpan.setAttribute('ln',i+1);
 			// line number gutter
 			var lineNumber = document.createElement('span');
 			lineNumber.setAttribute('class', 'line-number-gutter')
-			lineNumber.innerText = i;
+			lineNumber.innerText = i+1;
 			wrapperSpan.appendChild(lineNumber);
 			// split lines with spaces
 
@@ -70,4 +82,65 @@ function Highlighter(textArea, pre) {
 			that.pre.appendChild(wrapperSpan);
 		});
 	}
+	this.detectLineChange = function(lines) {
+		// checks if number of lines has changed and also updates new mappings
+		var flag = false;
+
+		if(that.noOfLines !== lines.length + 1) {
+			// number of lines have changed
+			flag = true;
+			that.noOfLines = lines.length + 1;	
+		}
+		return flag;
+	}
+
+	this.detectLineNumber = function() {
+
+		var lineNumber = that.textArea.value.substr(0, that.textArea.selectionStart).split('\n').length;
+		// console.log('current Line Number', lineNumber);
+		return lineNumber;
+	}
+
+	this.selectTextAreaLine = function(lines, lineNumber) {
+		var result = lines[lineNumber-1];
+
+		// console.log('substr of current line ', JSON.stringify(result)
+		// 									    .replace(/^"|"$/g, '')
+		// 									    .replace(/'/g, "\\'")
+		// 									    .replace(/\\"/g, '"') );
+		// return that.textArea.value.substr(startPos, endPos).replace(/\n/g,'');
+		return result;
+	}
+
+	this.lazyParser = function(lines) {
+		// console.log('lazy parser called');
+		// detect the line number of cursor
+		var lineNumber  = that.detectLineNumber();
+		var lineText = that.selectTextAreaLine(lines, lineNumber);
+
+		var x = Array.from(that.pre.getElementsByClassName('presentation'));
+
+		var wrapperSpan = x.filter(function(el) { return el.getAttribute('ln') == lineNumber })[0];
+
+		// console.log('found wrapper span', wrapperSpan);
+		wrapperSpan.innerHTML = '';
+		// line number gutter
+		var lineNumberGutter = document.createElement('span');
+		lineNumberGutter.setAttribute('class', 'line-number-gutter')
+		lineNumberGutter.innerText = lineNumber;
+		wrapperSpan.appendChild(lineNumberGutter);
+
+		var highlightedLine = lineText;
+
+		highlightedLine = highlightedLine.replace(that.allKeywordsRegExp, '<span class="js-keyword">$1</span>');
+		// Highlight numbers
+		highlightedLine = highlightedLine.replace(/(\d+)(?!'\d+?')/g,'<span class="js-number">$1</span>');
+		// Highlight strings inside quotes
+		highlightedLine = highlightedLine.replace(/('.*?')/g, '<span class="js-single-quote-string">$1</span>');
+
+		wrapperSpan.innerHTML += highlightedLine;
+
+		// that.pre.innerHTML += '\n'; // not needed ??
+	}
+
 }
