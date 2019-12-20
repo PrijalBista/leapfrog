@@ -50,6 +50,23 @@ function Editor(parentElement,config) {
 		this.textArea.addEventListener('keydown', this.tabHandler.bind(this));
 		this.textArea.addEventListener('keyup', this.keyPressHandler.bind(this));
 		this.textArea.addEventListener('scroll', this.scrollHandler.bind(this));
+		// handle ctrl+c to copy whole line when not selected
+
+		this.textArea.addEventListener('copy', function(e) {
+
+			if(that.textArea.selectionStart !== that.textArea.selectionEnd) return;
+			// console.log('copy event',e);
+			var lines = that.textArea.value.split(/\n/g);
+			var lineNumber  = that.highlighter.detectLineNumber();
+			var lineText = that.highlighter.selectTextAreaLine(lines, lineNumber);
+			e.preventDefault();
+			
+			if (e.clipboardData) {
+			    e.clipboardData.setData('text/plain', lineText);
+			} else if (window.clipboardData) {
+			    window.clipboardData.setData('Text', lineText);
+			} 	
+		});
 	}
 
 	this.tabHandler = function(e) {

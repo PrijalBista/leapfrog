@@ -92,6 +92,7 @@ function AutoComplete(parentElement, textArea, pre) {
 				|| text[i] === '[' || text[i] === ']'
 				|| text[i] === '\'' || text[i] === '\''
 				|| text[i] === '\"' || text[i] === '\"'
+				|| text[i] === '+'
 				) break;
 			usrInput.unshift(text[i]);
 		}
