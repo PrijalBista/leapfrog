@@ -92,4 +92,8 @@ function Editor(parentElement,config) {
 
 		this.displayCodeArea.scrollTop = scrolltop;
 	}
+
+	this.getText = function() {
+		return this.textArea.value;
+	}
 }
