@@ -89,12 +89,6 @@ function Highlighter(textArea, pre) {
 
 	this.selectTextAreaLine = function(lines, lineNumber) {
 		var result = lines[lineNumber-1];
-
-		// console.log('substr of current line ', JSON.stringify(result)
-		// 									    .replace(/^"|"$/g, '')
-		// 									    .replace(/'/g, "\\'")
-		// 									    .replace(/\\"/g, '"') );
-		// return that.textArea.value.substr(startPos, endPos).replace(/\n/g,'');
 		return result;
 	}
 

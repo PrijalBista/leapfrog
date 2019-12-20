@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Online Js Editor</title>
+	<title>JSEditor</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/jsSyntaxStyles.css">
 </head>
 <body>
 	<div class="container">
-		<div id="myEditorContainer">
-			
-		</div>
-		<a href="editorRunner.html">Goto Runnable Editor</a>
-	</div>
+		<div id="myEditorContainer"></div>
 
+		<button onclick="runJs()">RUN</button>
+		<hr>
+		<h4>Console Output</h4>
+		<div id="output"></div>
+	</div>
 	<script src="js/Highlighter.js"></script>
 	<script src="js/AutoComplete.js"></script>
 	<script src="js/Editor.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/editorRunner.js"></script>
 </body>
 </html>
